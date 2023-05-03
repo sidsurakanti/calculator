@@ -1,19 +1,25 @@
-import parser
 from lexer import Lexer
 from _parser import Parser
-from _interpreter import Interpreter
+from interpreter import Interpreter
+
 from colorama import Fore, Style
 
-print('\nType "quit" to quit the program')
+
+print('\nType "quit" to exit calculator')
+
 while True:
-  print(Fore.GREEN + ">>>" + Style.RESET_ALL, end=" ")
+  # get input
+  print(Fore.BLUE + ">>>" + Style.RESET_ALL, end=" ")
   expression = input()
-  if "quit" in expression:
+
+  if "quit" == expression.lower():
     break
-  lexer = Lexer(expression)
-  tokens = lexer.lexer()
-  results = Parser(tokens)
-  results = results.parse()
+
+  # get results
+  tokens = Lexer(expression).lexer()
+  results = Parser(tokens).parse()
   interpreter = Interpreter(results)
+
+  # display results
   print("\n".join(map(str, [*interpreter.run()])))
  
