@@ -8,4 +8,4 @@ A calculator with a standalone lexer and parser.
     - `pip install colorama`
 
 ## Usage
-![Screenshot](https://imgur.com/Ze3ccLT)
+[Screenshot](https://imgur.com/Ze3ccLT)
