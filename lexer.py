@@ -33,7 +33,7 @@ class Lexer:
         num = ""
 
         # when current char is a digit, add it to a string
-        while (self.current.isdigit() or self.current == ".") and (self.current is not None):
+        while  (self.current is not None) and (self.current.isdigit() or self.current == "."):
           num += self.current
           self.next()
 
