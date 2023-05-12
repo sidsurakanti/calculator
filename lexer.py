@@ -17,7 +17,7 @@ class Lexer:
     self.next()
 
   def next(self):
-    "iterate to next char in expression"
+    "Iterate thru expression"
     try:
       self.current = next(self.expression)
     except StopIteration:
@@ -25,33 +25,33 @@ class Lexer:
   
   def lexer(self):
     while self.current is not None:
+      # ignore whitespace chars
       if self.current.isspace():
         self.next()
 
       # if current char is a digit
       elif self.current.isdigit():
         num = ""
-
-        # when current char is a digit, add it to a string
+        # check next chars to see if they're part of the number
         while  (self.current is not None) and (self.current.isdigit() or self.current == "."):
           num += self.current
           self.next()
 
-        # convert number into a token object (ref. tokens.py)
+        # tokenize number (ref. tokens.py)
         yield Token("NUMBER", float(num))
 
-      # if current char is an operator
+      # if operator found > tokenize operator
       elif self.current in ("+", "-", "*", "/"):
         operator = self.current 
         self.next()
         yield Token(self.__operators[operator], operator)
 
-      # if current char is a parenthesis
+      # deal with parenthesis 
       elif self.current in ("(", ")"):
         paren = self.current
         self.next()
         yield Token(self.__operators[paren], paren)
-    
+
       else:
         raise SyntaxError("Invalid Syntax")
 
