@@ -11,7 +11,7 @@ A simple math interpreter.
 
 #### Installation
 ```cmd
-git clone https://github.com/sidsurakanti/calculator
+git clone https://github.com/sidsurakanti/calculator.git
 cd /path/to/project/
 pip install -r requirements.txt
 ```
